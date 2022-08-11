@@ -30,8 +30,8 @@ console.log(x);
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
+console.log(bar); //undefined
+console.log(baz); // reference error // fin
 foo();
 function foo() { console.log('Hola!'); }
 var bar = 1;

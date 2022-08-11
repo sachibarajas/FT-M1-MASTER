@@ -1,8 +1,17 @@
 "use strict";
 
+const { TestWatcher } = require("jest");
+
 // Closures
 
 function counter() {
+  let i=0;
+  return function(){
+    i=i+1;
+    return(i);
+  }
+} 
+
   /*
   Ejercicio 1
 
@@ -19,9 +28,20 @@ function counter() {
   otroContador()      // 2
   otroContador()      // 3
    */
-}
+
+
 
 function cacheFunction(cb) {
+    let obj =new Object();
+    return function(arg){
+      if (obj.hasOwnProperty(arg)==true){
+        return obj[arg];
+      }else{
+        obj[arg] = cb(arg);
+        return obj[arg];
+      }
+    }
+}
   /*
   Ejercicio 2
 
@@ -41,7 +61,7 @@ function cacheFunction(cb) {
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) 
 
   */
-}
+
 
 // Bind
 
@@ -67,9 +87,9 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor;
-let getNombreAlumno;
-
+let getNombreInstructor=getNombre.bind(instructor);
+let getNombreAlumno=getNombre.bind(alumno);
+ 
 /*
   Ejercicio 4
   
@@ -78,6 +98,11 @@ let getNombreAlumno;
 
 function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
+}
+
+let asteriscos={
+  delimitadorDerecha: "*",
+  delimitadorIzquierda: "*"
 }
 
 let textoAsteriscos;
