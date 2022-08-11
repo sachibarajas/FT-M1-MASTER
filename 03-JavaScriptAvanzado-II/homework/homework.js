@@ -100,14 +100,10 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let asteriscos={
-  delimitadorDerecha: "*",
-  delimitadorIzquierda: "*"
-}
 
-let textoAsteriscos;
-let textoGuiones;
-let textoUnderscore;
+let textoAsteriscos = crearCadena.bind(null,'*','*');
+let textoGuiones = crearCadena.bind(null,'-','-');
+let textoUnderscore = crearCadena.bind(null,'_','_');
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
