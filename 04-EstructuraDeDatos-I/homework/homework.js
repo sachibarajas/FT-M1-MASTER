@@ -42,46 +42,45 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue(){
-class Node{
-  constructor(data){
-    this.data = data;
-    this.next = null;
-    }
-  }
-class Queue{
-    constructor(){
-        this.top = null;
-        this.bottom = null;
-        this.size = 0
-    }
-    enqueue(valor){
-      var newNode= new Node(valor);
-      if (this.size===0){
-        this.top=newNode;
-        this.bottom=newNode;
-      }else{
-        var currentBottom=this.bottom;
-        this.bottom=newNode;
-        currentBottom.next=this.bottom
-      }
-      this.size++;
-    }
-    dequeue(){
-      if (this.size===0){
-        return undefined;
-      }else if(this.size===1){
-        this.top=null;
-        this.bottom=null;
-      }else{
-        this.top=this.top.next;
-      }
-      this.size--;
-    }
-    size(){
-      return this.size;
-    }
-  }
+  this.top = null;
+  this.bottom = null;
+  this.size = 0
 }
+let queue= new Queue();
+
+Queue.prototype.enqueue=function(valor){
+    var newNode= new Node(valor);
+    if (this.size===0){
+      this.top=newNode;
+      this.bottom=newNode;
+    }else{
+          var currentBottom=this.bottom;
+          this.bottom=newNode;
+          currentBottom.next=this.bottom
+        }
+        this.size++;
+    }
+Queue.prototype.dequeue=function(){
+  if (this.size===0){
+    return undefined;
+  }else if(this.size===1){
+    this.top=null;
+    this.bottom=null;
+  }else{
+    this.top=this.top.next;
+  }
+  this.size--;
+}
+Queue.prototype.size=function(){
+  return this.size;
+}
+   
+
+function Node(data){
+  this.data = data;
+  this.next = null;
+}
+  
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
